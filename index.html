@@ -1,217 +1,34 @@
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
-    <title>MI PRIMERA VEZ CON JAVASCRIPT</title>
+    <title>PRACTICAS JAVASCRIPT</title>
 </head>
 <body>
-
-<nav class="navbar bg-1 fg-2">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="img/cecyto.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-            PRACTICA 1 JAVASCRIPT
-        </a>
-    </div>
-</nav>
-
-<div class="container p-4">
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-danger" onclick="mensaje1()"><i class="bi bi-alarm"></i> ALARMA</button>
-            <button class="btn btn-success" onclick="mensaje2()"><i class="bi bi-airplane-fill"></i> AVION</button>
-            <button class="btn btn-warning" onclick="mensaje3()"><i class="bi bi-arrow-down-circle"></i> DESCARGAR</button>
-            <button class="btn btn-info" onclick="mensaje4()"><i class="bi bi-arrow-clockwise"></i> ACTUALIZAR</button>
-            <button class="btn btn-primary" onclick="mensaje5()"><i class="bi bi-bag-check"></i> COMPRAR</button>
+    <nav class="navbar bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/cecyto.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                MENU
+            </a>
         </div>
+    </nav>
 
-        <div class="col">
-            <button class="btn btn-secondary" onclick="mensaje6()"><i class="bi bi-question-square-fill"></i> AYUDA</button>
-            <button class="btn btn-dark" onclick="mensaje7()"><i class="bi bi-bell-slash-fill"></i> SILENCIO</button>
-            <button class="btn btn-light border" onclick="mensaje8()"><i class="bi bi-bluetooth"></i> BLUETOOTH</button>
-            <button class="btn btn-outline-warning" onclick="mensaje9()"><i class="bi bi-brightness-high-fill"></i> BRILLO</button>
-            <button class="btn btn-outline-success" onclick="mensaje10()"><i class="bi bi-calendar-date"></i> CALENDARIO</button>
+    <div class="container p-4">
+        <div class="row">
+            <a class="btn-solid theme-danger my-3" href="01practica.html" onclick="mensaje1()"><i class="bi bi-apple"></i>Practica 1</a>
+            <a class="btn-solid theme-danger my-3" href="02practica.html" onclick="mensaje1()"><i class="bi bi-apple"></i>Practica 2</a>
+            <a class="btn-solid theme-danger my-3" href="04signos.html" onclick="mensaje1()"><i class="bi bi-apple"></i>Practica 3</a>
+            <a class="btn-solid theme-danger my-3" href="salarioneto.html" onclick="mensaje1()"><i class="bi bi-apple"></i>Practica 4</a>
+                        <a class="btn-solid theme-danger my-3" href="05practica.html" onclick="mensaje1()"><i class="bi bi-apple"></i>Practica 5</a>
+            
         </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="sweetalert2.all.min.js"></script>
-
-<script>
-function mensaje1(){
-    Swal.fire({
-        title: "Good job!",
-        text: "ALARMA ACTIVADA",
-        icon: "success"
-    });
-}
-
-function mensaje2(){
-    Swal.fire({
-        title: "MODO AVION",
-        text: "ACTIVADO",
-        icon: "question"
-    });
-}
-
-function mensaje3(){
-    Swal.fire({
-        title: "¿Quieres descargar el archivo?",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Descargar",
-        denyButtonText: "No descargar"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire("Descarga iniciada", "", "success");
-        } else if (result.isDenied) {
-            Swal.fire("La descarga fue cancelada", "", "info");
-        }
-    });
-}
-
-function mensaje4(){
-    let timerInterval;
-    Swal.fire({
-        title: "Actualizando...",
-        html: "La página se cerrará en <b></b> milisegundos.",
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: () => {
-            Swal.showLoading();
-            const timer = Swal.getPopup().querySelector("b");
-            timerInterval = setInterval(() => {
-                timer.textContent = `${Swal.getTimerLeft()}`;
-            }, 100);
-        },
-        willClose: () => {
-            clearInterval(timerInterval);
-        }
-    }).then((result) => {
-        if (result.dismiss === Swal.DismissReason.timer) {
-            console.log("La alerta se cerró automáticamente por el temporizador");
-        }
-    });
-}
-
-function mensaje5(){
-    Swal.fire({
-        title: "¿Deseas realizar la compra?",
-        width: 600,
-        padding: "3em",
-        color: "#716add",
-        background: "#fff url('img/gti.webp')",
-        backdrop: `
-            rgba(0,0,123,0.4)
-            url("img/fondo4.webp")
-            left top
-            no-repeat
-        `,
-        showCancelButton: true,
-        confirmButtonText: "Comprar",
-        cancelButtonText: "Cancelar"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire("¡Compra realizada!", "", "success");
-        } else if (result.isDismissed) {
-            Swal.fire("La compra fue cancelada", "", "info");
-        }
-    });
-}
-
-function mensaje6(){
-    Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Algo salió mal!",
-        footer: '<a href="#">Necesitas ayuda?</a>'
-    });
-}
-
-function mensaje7(){
-    Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "SILENCIO ACTIVADO",
-        showConfirmButton: false,
-        timer: 1500
-    });
-}
-
-function mensaje8(){
-    Swal.fire({
-        title: "ACTIVAR BLUETOOTH",
-        icon: "question",
-        iconHtml: "؟",
-        confirmButtonText: "نعمYES",
-        cancelButtonText: "لاNO",
-        showCancelButton: true,
-        showCloseButton: true
-    });
-}
-
-function mensaje9(){
-    Swal.fire({
-        title: "Control de brillo",
-        text: "¿Deseas aumentar el brillo de la pantalla?",
-        icon: "warning",
-        width: 600,
-        padding: "2em",
-        color: "#333",
-        background: "#fff url('img/brillo.jpg')",
-        backdrop: `
-            rgba(255,255,0,0.3)
-            url("img/sol.gif")
-            center top
-            no-repeat
-        `,
-        showCancelButton: true,
-        confirmButtonText: "Aumentar",
-        cancelButtonText: "Mantener igual"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire("¡Brillo aumentado!", "", "success");
-        } else if (result.isDismissed) {
-            Swal.fire("El brillo se mantiene igual", "", "info");
-        }
-    });
-}
-
-function mensaje10(){
-    Swal.fire({
-        title: "Agrega un evento al calendario",
-        input: "text",
-        inputAttributes: { autocapitalize: "off" },
-        showCancelButton: true,
-        confirmButtonText: "Guardar",
-        showLoaderOnConfirm: true,
-        preConfirm: async (evento) => {
-            try {
-                if (!evento) {
-                    return Swal.showValidationMessage("Debes escribir un nombre para el evento");
-                }
-                return { nombre: evento };
-            } catch (error) {
-                Swal.showValidationMessage(`Error: ${error}`);
-            }
-        },
-        allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: "Evento guardado",
-                text: `Has agregado: ${result.value.nombre}`,
-                icon: "success"
-            });
-        }
-    });
-}
-</script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
 
 </body>
 </html>
